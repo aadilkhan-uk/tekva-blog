@@ -22,3 +22,19 @@ export const chapterQuery = groq`*[_type == "chapter" && slug.current == $chapte
   title,
   content
 }`;
+
+export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
+  _id,
+  title,
+  slug,
+  publishedAt,
+  mainImage,
+  excerpt
+}`;
+
+export const postQuery = groq`*[_type == "post" && slug.current == $slug][0] {
+  title,
+  publishedAt,
+  mainImage,
+  body
+}`;

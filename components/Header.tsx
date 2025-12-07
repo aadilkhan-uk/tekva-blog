@@ -29,7 +29,7 @@ export default function Header() {
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest text-gray-400">
                     <Link href="/courses" className="hover:text-white transition-colors">Courses</Link>
-                    <Link href="#" className="hover:text-white transition-colors">Blog</Link>
+                    <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
                     <Link href="#" className="hover:text-white transition-colors">Consultancy</Link>
                 </div>
 
@@ -70,7 +70,7 @@ export default function Header() {
                         <Link href="/courses" onClick={toggleMenu} className="text-2xl font-bold tracking-widest uppercase hover:text-primary transition-colors">
                             Courses
                         </Link>
-                        <Link href="#" onClick={toggleMenu} className="text-2xl font-bold tracking-widest uppercase hover:text-primary transition-colors">
+                        <Link href="/blog" onClick={toggleMenu} className="text-2xl font-bold tracking-widest uppercase hover:text-primary transition-colors">
                             Blog
                         </Link>
                         <Link href="#" onClick={toggleMenu} className="text-2xl font-bold tracking-widest uppercase hover:text-primary transition-colors">
