@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -99,11 +100,11 @@ export default function Home() {
           transition={{ duration: 1, delay: 1 }}
           className="absolute bottom-12 left-12 md:left-32 z-30"
         >
-          <div className="flex items-center gap-4 mb-4 cursor-pointer group">
+          <Link href="/about" className="flex items-center gap-4 mb-4 cursor-pointer group">
             <span className="text-sm font-bold tracking-widest uppercase group-hover:text-primary transition-colors">Learn More</span>
             <span className="w-12 h-[1px] bg-white group-hover:bg-primary transition-colors"></span>
             <span className="text-xl group-hover:translate-x-2 transition-transform">→</span>
-          </div>
+          </Link>
         </motion.div>
 
         <motion.div

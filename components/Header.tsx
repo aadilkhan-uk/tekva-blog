@@ -30,12 +30,12 @@ export default function Header() {
                 <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest text-gray-400">
                     <Link href="/courses" className="hover:text-white transition-colors">Courses</Link>
                     <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
-                    <Link href="#" className="hover:text-white transition-colors">Consultancy</Link>
+                    <Link href="/consultancy" className="hover:text-white transition-colors">Consultancy</Link>
                 </div>
 
-                <button className="hidden md:block border border-white/20 px-6 py-2 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                <Link href="/about" className="hidden md:block border border-white/20 px-6 py-2 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all">
                     Learn More
-                </button>
+                </Link>
 
                 {/* Mobile Hamburger */}
                 <button onClick={toggleMenu} className="md:hidden z-50 relative text-white">
@@ -73,7 +73,7 @@ export default function Header() {
                         <Link href="/blog" onClick={toggleMenu} className="text-2xl font-bold tracking-widest uppercase hover:text-primary transition-colors">
                             Blog
                         </Link>
-                        <Link href="#" onClick={toggleMenu} className="text-2xl font-bold tracking-widest uppercase hover:text-primary transition-colors">
+                        <Link href="/consultancy" onClick={toggleMenu} className="text-2xl font-bold tracking-widest uppercase hover:text-primary transition-colors">
                             Consultancy
                         </Link>
                     </motion.div>
