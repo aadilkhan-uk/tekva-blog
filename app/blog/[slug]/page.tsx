@@ -22,6 +22,11 @@ const components = {
                 </div>
             );
         },
+        html: ({ value }: any) => {
+            return (
+                <div dangerouslySetInnerHTML={{ __html: value.code }} className="my-8" />
+            );
+        },
     },
 };
 
