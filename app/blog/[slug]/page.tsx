@@ -17,7 +17,7 @@ const components = {
                         src={urlFor(value).url()}
                         alt={value.alt || 'Blog Image'}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                     />
                 </div>
             );
@@ -54,7 +54,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                             src={urlFor(post.mainImage).url()}
                             alt={post.title}
                             fill
-                            className="object-cover"
+                            className="object-contain"
                             priority
                         />
                     </div>

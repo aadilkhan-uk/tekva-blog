@@ -21,7 +21,7 @@ export default async function BlogPage() {
                                     src={urlFor(post.mainImage).url()}
                                     alt={post.title}
                                     fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                    className="object-contain group-hover:scale-105 transition-transform duration-500"
                                 />
                             </div>
                         )}
