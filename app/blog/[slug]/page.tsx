@@ -28,6 +28,14 @@ const components = {
             );
         },
     },
+    list: {
+        bullet: ({ children }: any) => <ul className="list-disc pl-6 my-4 space-y-2 text-gray-300">{children}</ul>,
+        number: ({ children }: any) => <ol className="list-decimal pl-6 my-4 space-y-2 text-gray-300">{children}</ol>,
+    },
+    listItem: {
+        bullet: ({ children }: any) => <li className="pl-1">{children}</li>,
+        number: ({ children }: any) => <li className="pl-1">{children}</li>,
+    },
 };
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
