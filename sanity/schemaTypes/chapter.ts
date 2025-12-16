@@ -41,7 +41,8 @@ export default defineType({
                             type: 'url'
                         }
                     ]
-                }
+                },
+                { type: 'html' },
             ],
         }),
     ],
