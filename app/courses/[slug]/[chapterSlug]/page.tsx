@@ -22,6 +22,11 @@ const components = {
                 </div>
             );
         },
+        html: ({ value }: any) => {
+            return (
+                <div dangerouslySetInnerHTML={{ __html: value.code }} className="my-8" />
+            );
+        },
     },
     list: {
         bullet: ({ children }: any) => <ul className="list-disc pl-6 my-4 space-y-2 text-gray-300">{children}</ul>,
