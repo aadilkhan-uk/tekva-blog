@@ -23,6 +23,14 @@ const components = {
             );
         },
     },
+    list: {
+        bullet: ({ children }: any) => <ul className="list-disc pl-6 my-4 space-y-2 text-gray-300">{children}</ul>,
+        number: ({ children }: any) => <ol className="list-decimal pl-6 my-4 space-y-2 text-gray-300">{children}</ol>,
+    },
+    listItem: {
+        bullet: ({ children }: any) => <li className="pl-1">{children}</li>,
+        number: ({ children }: any) => <li className="pl-1">{children}</li>,
+    },
     block: {
         normal: ({ children }: any) => <p className="mb-6 leading-relaxed text-gray-200">{children}</p>,
         h1: ({ children }: any) => <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>,
