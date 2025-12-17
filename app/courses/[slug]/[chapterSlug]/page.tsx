@@ -17,7 +17,7 @@ const components = {
                         src={urlFor(value).url()}
                         alt={value.alt || 'Chapter Image'}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                     />
                 </div>
             );
