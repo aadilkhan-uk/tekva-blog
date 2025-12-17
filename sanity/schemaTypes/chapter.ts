@@ -20,6 +20,12 @@ export default defineType({
             },
         }),
         defineField({
+            name: 'goals',
+            title: 'Chapter Goals',
+            type: 'array',
+            of: [{ type: 'string' }],
+        }),
+        defineField({
             name: 'content',
             title: 'Content',
             type: 'array',

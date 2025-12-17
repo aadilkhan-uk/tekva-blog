@@ -6,6 +6,7 @@ import { PortableText } from '@portabletext/react';
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import DefinitionsModal from '@/components/DefinitionsModal';
+import { CheckCircle } from 'lucide-react';
 
 export const revalidate = 60;
 
@@ -60,6 +61,23 @@ export default async function ChapterPage({ params }: { params: Promise<{ slug: 
 
             <article className="prose prose-invert prose-lg max-w-none">
                 <h1 className="text-4xl font-bold mb-8 tracking-tighter">{chapter.title}</h1>
+
+                {chapter.goals && chapter.goals.length > 0 && (
+                    <div className="my-8 p-6 bg-white/5 border border-white/10 rounded-xl">
+                        <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                            Chapter Goals
+                        </h2>
+                        <ul className="space-y-3">
+                            {chapter.goals.map((goal: string, index: number) => (
+                                <li key={index} className="flex items-start gap-3 text-gray-300">
+                                    <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                                    <span>{goal}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
                 <PortableText value={chapter.content} components={components} />
             </article>
 
