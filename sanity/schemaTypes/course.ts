@@ -38,5 +38,19 @@ export default defineType({
             type: 'array',
             of: [{ type: 'reference', to: { type: 'chapter' } }],
         }),
+        defineField({
+            name: 'definitions',
+            title: 'Definitions',
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        { name: 'title', type: 'string', title: 'Term' },
+                        { name: 'description', type: 'text', title: 'Definition' },
+                    ],
+                },
+            ],
+        }),
     ],
 })

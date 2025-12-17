@@ -20,7 +20,10 @@ export const courseQuery = groq`*[_type == "course" && slug.current == $slug][0]
 
 export const chapterQuery = groq`*[_type == "chapter" && slug.current == $chapterSlug][0] {
   title,
-  content
+  content,
+  "course": *[_type == "course" && references(^._id)][0] {
+    definitions
+  }
 }`;
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {

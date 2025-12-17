@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
+import DefinitionsModal from '@/components/DefinitionsModal';
 
 export const revalidate = 60;
 
@@ -61,6 +62,8 @@ export default async function ChapterPage({ params }: { params: Promise<{ slug: 
                 <h1 className="text-4xl font-bold mb-8 tracking-tighter">{chapter.title}</h1>
                 <PortableText value={chapter.content} components={components} />
             </article>
+
+            <DefinitionsModal definitions={chapter.course?.definitions} />
         </div>
     );
 }
