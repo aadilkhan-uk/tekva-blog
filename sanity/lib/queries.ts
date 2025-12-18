@@ -23,7 +23,12 @@ export const chapterQuery = groq`*[_type == "chapter" && slug.current == $chapte
   goals,
   content,
   "course": *[_type == "course" && references(^._id)][0] {
-    definitions
+    slug,
+    definitions,
+    chapters[]->{
+      title,
+      slug
+    }
   }
 }`;
 
