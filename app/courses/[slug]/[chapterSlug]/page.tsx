@@ -11,12 +11,24 @@ import Link from 'next/link';
 import { useState, useEffect, Fragment, use } from 'react';
 import { client } from '@/sanity/lib/client';
 import { chapterQuery } from '@/sanity/lib/queries';
+import TableOfContents from '@/components/TableOfContents';
 
 type Props = {
     params: Promise<{
         slug: string;
         chapterSlug: string;
     }>;
+};
+
+// Helper to slugify text for IDs
+const slugify = (text: string) => {
+    return text
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-');
 };
 
 export default function ChapterPage({ params }: Props) {
@@ -28,11 +40,29 @@ export default function ChapterPage({ params }: Props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
 
+    // Table Of Contents State
+    const [headings, setHeadings] = useState<{ id: string; text: string; level: 'h3' | 'h4' }[]>([]);
+
     useEffect(() => {
         const fetchChapter = async () => {
             const data = await client.fetch(chapterQuery, { chapterSlug });
             if (data) {
                 setChapter(data);
+
+                // Extract headings
+                if (data.content) {
+                    const extractedHeadings = data.content
+                        .filter((block: any) => block.style === 'h3' || block.style === 'h4')
+                        .map((block: any) => {
+                            const text = block.children.map((child: any) => child.text).join(' ');
+                            return {
+                                id: slugify(text),
+                                text: text,
+                                level: block.style,
+                            };
+                        });
+                    setHeadings(extractedHeadings);
+                }
             }
             setIsLoading(false);
         };
@@ -126,7 +156,16 @@ export default function ChapterPage({ params }: Props) {
             },
             h1: ({ children }: any) => <h1 className="text-4xl font-bold mb-6 text-white">{children}</h1>,
             h2: ({ children }: any) => <h2 className="text-3xl font-bold mb-4 mt-8 text-white">{children}</h2>,
-            h3: ({ children }: any) => <h3 className="text-2xl font-semibold mb-3 mt-6 text-white">{children}</h3>,
+            h3: ({ value, children }: any) => {
+                const text = value.children.map((child: any) => child.text).join(' ');
+                const id = slugify(text);
+                return <h3 id={id} className="text-2xl font-semibold mb-3 mt-8 text-white scroll-mt-24">{children}</h3>
+            },
+            h4: ({ value, children }: any) => {
+                const text = value.children.map((child: any) => child.text).join(' ');
+                const id = slugify(text);
+                return <h4 id={id} className="text-xl font-medium mb-2 mt-6 text-primary/90 scroll-mt-24">{children}</h4>
+            },
             blockquote: ({ children }: any) => (
                 <blockquote className="border-l-4 border-primary pl-4 my-8 italic text-gray-400">
                     {children}
@@ -256,6 +295,12 @@ export default function ChapterPage({ params }: Props) {
                     searchQuery: searchQuery,
                     onSearchChange: setSearchQuery,
                 }}
+            />
+
+            <TableOfContents
+                headings={headings}
+                chapters={chapter.course?.chapters}
+                currentChapterSlug={chapterSlug}
             />
         </div>
     );
