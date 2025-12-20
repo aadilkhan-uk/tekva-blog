@@ -49,6 +49,7 @@ export default defineType({
                     options: { hotspot: true },
                 },
                 { type: 'html' },
+                { type: 'modalButton' },
             ],
         }),
     ],

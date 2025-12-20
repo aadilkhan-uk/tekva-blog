@@ -1,7 +1,8 @@
 "use client"
 import { groq } from 'next-sanity';
 import { notFound } from 'next/navigation';
-import { PortableText } from '@portabletext/react';
+import { PortableText } from '@portabletext/react'
+import ModalButton from '@/components/ModalButton'
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import DefinitionsModal from '@/components/DefinitionsModal';
@@ -103,10 +104,10 @@ export default function ChapterPage({ params }: Props) {
                 );
             },
             html: ({ value }: any) => {
-                return (
-                    <div dangerouslySetInnerHTML={{ __html: value.code }} className="my-8" />
-                );
+                const code = value.code || ''
+                return <div dangerouslySetInnerHTML={{ __html: code }} className="my-6" />
             },
+            modalButton: ModalButton,
         },
         block: {
             normal: ({ children }: any) => {

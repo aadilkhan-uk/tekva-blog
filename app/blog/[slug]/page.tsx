@@ -5,6 +5,7 @@ import { postQuery } from '@/sanity/lib/queries';
 import { notFound } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
 import { urlFor } from '@/sanity/lib/image';
+import ModalButton from '@/components/ModalButton';
 
 export const revalidate = 60;
 
@@ -27,6 +28,7 @@ const components = {
                 <div dangerouslySetInnerHTML={{ __html: value.code }} className="my-8" />
             );
         },
+        modalButton: ModalButton,
     },
     list: {
         bullet: ({ children }: any) => <ul className="list-disc pl-6 my-4 space-y-2 text-gray-300">{children}</ul>,

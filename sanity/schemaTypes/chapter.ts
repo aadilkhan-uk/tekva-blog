@@ -49,6 +49,7 @@ export default defineType({
                     ]
                 },
                 { type: 'html' },
+                { type: 'modalButton' },
             ],
         }),
     ],
